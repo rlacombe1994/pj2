@@ -141,6 +141,20 @@ void linearsearch(vector<Student>& All,double Gpa)
     cout << GpA;
 }
 
+void insert(vector<Studnet>& All, Student add)
+{
+	All.push_back(add);
+}
+void remove(vector<Studnet>& All, Student del)
+{
+	
+	int index = binaryserach(All,del);
+	if(index <0)
+		cout<<del.name<<" is not in the vector"<<endl;
+	else
+		All.erase(All.begin()+index);
+}
+
 int main()
 {
 	vector<Student> vi(10);
