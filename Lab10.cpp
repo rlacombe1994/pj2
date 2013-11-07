@@ -101,25 +101,29 @@ int binaryserach(vector<Student>& All,int Uin)
     int middle=All.size()/2;
     int end=All.size();
     int place=All.size()/2;
+    int combobreaker=0;
     while(true)
     {
-          if(All[place].UIN<Uin)
+	if(combobreaker==10) break;
+        else if(All[place].UIN<Uin)
           {
               if(place>=middle) place=(place+end)/2;
               else place=(place+middle)/2;
-              cout << place << '\n';
+              //cout << place << '\n';
           }
-          else if(All[place].UIN>Uin)
+        else if(All[place].UIN>Uin)
           {
               if(middle<place && place<=end)
               {
                   place=(place+middle)/2;
               }
               else place=(place)/2;
-              cout << place << '\n';
+              //cout << place << '\n';
           }
-          else return (place+1);
+        else return (place+1);
+		++combobreaker;
     }
+	return -1;
 }
 
 void linearsearch(vector<Student>& All,double Gpa)
