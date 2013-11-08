@@ -20,6 +20,45 @@ struct Student
 	
 };
 
+void sortlastname(list<Student>& All)
+{
+    Student Temp("Bill",123,4.0);
+	list<Student>::iterator i;
+	list<Student>::iterator j; 
+    for(i=All.begin();i!=All.end();++i)
+	{
+        for(j=All.begin();j!=All.end();++j)
+        { 
+
+            if((*j).last_name > (*j++).last_name)
+            {
+                Temp=(*j);
+                (*j)=(*j++);
+                (*j++)=Temp; 
+            } 
+        }
+    } 
+}
+
+void sortUIN(list<Student>& All)
+{
+    Student Temp("Bill",123,4.0);
+	list<Student>::iterator i;
+	list<Student>::iterator j; 
+    for(i=All.begin();i!=All.end();++i)
+	{
+        for(j=All.begin();j!=All.end();++j)
+        { 
+
+            if((*j).UIN > (*j++).UIN)
+            {
+                Temp=(*j);
+                (*j)=(*j++);
+                (*j++)=Temp; 
+            } 
+        }
+    } 
+}
 
 void sortUIN(list<Student>& All)
 {
