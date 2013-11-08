@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <list>
 #include <cstdlib>
 #include <fstream>
 #include <sstream>
@@ -10,79 +11,119 @@ using namespace std;
 
 struct Student
 {
-	string last_name;
-	int UIN;
-	double GPA;
-	Student(string ln, int uin, double gpa)
-		: last_name(ln),UIN(uin), GPA(gpa) {}
-	Student () {}
+        string last_name;
+        int UIN;
+        double GPA;
+        Student(string ln, int uin, double gpa)
+                : last_name(ln),UIN(uin), GPA(gpa) {}
+        Student () {}
 };
 
 istream& operator>>(istream& is, vector<Student>& All)
 {
-	ifstream f_in("Student.txt",ios::in);
+        ifstream f_in("Student.txt",ios::in);
     
     string last_name;
     int UIN;
     double GPA;
-	
+        
+        string next;
+        int nextint;
+        double nextdouble;
+        
+        
+        int i=0;
+        
+        while(!f_in.eof())
+    {
+        f_in >> next;
+        last_name=next;
+                
+                f_in >> nextint;
+        UIN=nextint;
+                
+                f_in >> nextdouble;
+        GPA=nextdouble;
+                
+                Student A(last_name,UIN,GPA);
+                All[i]=A;
+                
+                ++i;
+        }
+        
+        return is;
+}
+
+istream& operator>>(istream& is, list<Student>& All)
+{
+	ifstream f_in("Student.txt",ios::in);
+	string last_name;
+    int UIN;
+    double GPA;
 	string next;
-	int nextint;
-	double nextdouble;
-	
-	
-	int i=0;
-	
+    int nextint;
+    double nextdouble;
+        
+        
+    int i=0;
+       
 	while(!f_in.eof())
     {
         f_in >> next;
         last_name=next;
-		
-		f_in >> nextint;
+             
+        f_in >> nextint;
         UIN=nextint;
-		
-		f_in >> nextdouble;
+                
+        f_in >> nextdouble;
         GPA=nextdouble;
-		
-		Student A(last_name,UIN,GPA);
-		All[i]=A;
-		
-		++i;
-	}
-        
-	return is;
-}
+                
+        Student A(last_name,UIN,GPA);
+		All.push_back(A);
+	
+    }
 
 ostream& operator<<(ostream& os, vector<Student>& All)
 {
+	list<Student>::iterator i;
+    for(int i=All.begin();i!=All.end();++i)
+    {
+		os<< *i.last_name<<'\t'<< *i.UIN<<'\t'<<*i.GPA<<endl;
+    }
+    return os;
+}
+
+ostream& operator<<(ostream& os, list<Student>& All)
+{
     for(int i=0;i<All.size();++i)
     {
-        if(All[i].last_name!="") cout << All[i].last_name << '\t' << All[i].UIN << '\t' << All[i].GPA << endl;
+        if(All[i].last_name!="")
+			os << All[i].last_name << '\t' << All[i].UIN << '\t' << All[i].GPA << endl;
     }
     return os;
 }
 
 void sortlastname(vector<Student>& All)
 {
-	Student Temp("Bill",123,4.0);
-	for(int i=0;i<All.size();++i)
-		{
-			for(int j=0;j<(All.size()-1);++j)
-			{
-				if(All[j].last_name>All[(j+1)].last_name)
-				{
-					Temp=All[j];
-					All[j]=All[j+1];
-					All[j+1]=Temp;
-				}
-			}
-		}
+        Student Temp("Bill",123,4.0);
+        for(int i=0;i<All.size();++i)
+                {
+                        for(int j=0;j<(All.size()-1);++j)
+                        {
+                                if(All[j].last_name>All[(j+1)].last_name)
+                                {
+                                        Temp=All[j];
+                                        All[j]=All[j+1];
+                                        All[j+1]=Temp;
+                                }
+                        }
+                }
 }
 
 void sortUIN(vector<Student>& All)
 {
-	Student Temp("Bill",123,4.0);
-	for(int i=0;i<All.size();++i)
+        Student Temp("Bill",123,4.0);
+        for(int i=0;i<All.size();++i)
     {
         for(int j=0;j<(All.size()-1);++j)
         {
@@ -104,7 +145,7 @@ int binaryserach(vector<Student>& All,int Uin)
     int combobreaker=0;
     while(true)
     {
-	if(combobreaker==10) break;
+        if(combobreaker==10) break;
         else if(All[place].UIN<Uin)
           {
               if(place>=middle) place=(place+end)/2;
@@ -121,9 +162,9 @@ int binaryserach(vector<Student>& All,int Uin)
               //cout << place << '\n';
           }
         else return (place+1);
-		++combobreaker;
+                ++combobreaker;
     }
-	return -1;
+        return -1;
 }
 
 void linearsearch(vector<Student>& All,double Gpa)
@@ -140,28 +181,44 @@ void linearsearch(vector<Student>& All,double Gpa)
     }
     cout << GpA;
 }
+int linearsearch_n(vector<Student>& All,string name)
+{
+    for(int i=0;i<All.size();++i)
+    {
+        if(All[i].last_name==name)
+        {
+            return i;
+        }
+    }
+    return -1;
+}
 
-void insert(vector<Studnet>& All, Student add)
+void insert(vector<Student>& All, Student add)
 {
-	All.push_back(add);
+        All.push_back(add);
 }
-void remove(vector<Studnet>& All, Student del)
+void remove(vector<Student>& All, Student del)
 {
-	
-	int index = binaryserach(All,del);
-	if(index <0)
-		cout<<del.name<<" is not in the vector"<<endl;
-	else
-		All.erase(All.begin()+index);
+        
+        int index = linearsearch_n(All,del.last_name);
+        if(index <0)
+                cout<<del.last_name<<" is not in the vector"<<endl;
+        else
+                All.erase(All.begin()+index);
 }
+
+
 
 int main()
 {
-	vector<Student> vi(10);
-	cin >> vi;
+        vector<Student> vi(10);
+		list<Student> li;
+        cin >> vi;
+		cin>>li;
     
+	
     cout << "---part A---\n";
-	sortlastname(vi);
+        sortlastname(vi);
     cout << vi;
     
     cout << "---part B---\n";
@@ -178,5 +235,5 @@ int main()
     double GPA;
     cout << "GPA: ";
     cin >> GPA;
-    linearsearch(vi,GPA);
+    linearsearch(vi,GPA); 
 }
