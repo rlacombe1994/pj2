@@ -17,7 +17,9 @@ struct Student
         Student(string ln, int uin, double gpa)
                 : last_name(ln),UIN(uin), GPA(gpa) {}
         Student () {}
+	
 };
+
 
 istream& operator>>(istream& is, vector<Student>& All)
 {
@@ -82,26 +84,30 @@ istream& operator>>(istream& is, list<Student>& All)
 		All.push_back(A);
 	
     }
+}
 
 ostream& operator<<(ostream& os, vector<Student>& All)
 {
-	list<Student>::iterator i;
-    for(int i=All.begin();i!=All.end();++i)
-    {
-		os<< *i.last_name<<'\t'<< *i.UIN<<'\t'<<*i.GPA<<endl;
-    }
-    return os;
-}
-
-ostream& operator<<(ostream& os, list<Student>& All)
-{
-    for(int i=0;i<All.size();++i)
+	 for(int i=0;i<All.size();++i)
     {
         if(All[i].last_name!="")
 			os << All[i].last_name << '\t' << All[i].UIN << '\t' << All[i].GPA << endl;
     }
     return os;
 }
+
+ostream& operator<<(ostream& os, list<Student>& All)
+{
+	list<Student>::iterator i;
+	Student temp;
+    for( i=All.begin();i!=All.end();++i)
+    {
+		
+		os<< (*i).last_name<<'\t'<< (*i).UIN<<'\t'<<(*i).GPA<<endl;
+    }
+    return os;
+	
+}  
 
 void sortlastname(vector<Student>& All)
 {
