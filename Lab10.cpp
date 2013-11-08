@@ -21,6 +21,27 @@ struct Student
 };
 
 
+void sortUIN(list<Student>& All)
+{
+    Student Temp("Bill",123,4.0);
+	list<Student> temps;
+	list<Student>::iterator i;
+	list<Student>::iterator j; 
+    for(i=All.begin();i!=All.end();++i)
+	{
+        for(j=All.begin();j!=All.end();++j)
+        { 
+
+            if((*j).UIN > (*j++).UIN)
+            {
+                Temp=(*j);
+                (*j)=(*j++);
+                (*j++)=Temp; 
+            } 
+        }
+    } 
+}
+
 istream& operator>>(istream& is, vector<Student>& All)
 {
         ifstream f_in("Student.txt",ios::in);
