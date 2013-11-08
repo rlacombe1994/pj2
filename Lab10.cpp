@@ -32,9 +32,17 @@ void sortlastname(list<Student>& All)
 
             if((*j).last_name > (*j++).last_name)
             {
-                Temp=(*j);
-                (*j)=(*j++);
-                (*j++)=Temp; 
+                Temp.last_name=(*j).last_name;
+				Temp.UIN=(*j).UIN;
+				Temp.GPA=(*j).GPA;
+				
+                (*j).last_name=(*j++).last_name;
+				(*j).UIN=(*j++).UIN;
+				(*j).GPA=(*j++).GPA;
+				
+                (*j++).last_name=Temp.last_name;			
+				(*j++).UIN=Temp.UIN;
+				(*j++).GPA=Temp.GPA;
             } 
         }
     } 
@@ -52,9 +60,17 @@ void sortUIN(list<Student>& All)
 
             if((*j).UIN > (*j++).UIN)
             {
-                Temp=(*j);
-                (*j)=(*j++);
-                (*j++)=Temp; 
+                Temp.last_name=(*j).last_name;
+				Temp.UIN=(*j).UIN;
+				Temp.GPA=(*j).GPA;
+				
+                (*j).last_name=(*j++).last_name;
+				(*j).UIN=(*j++).UIN;
+				(*j).GPA=(*j++).GPA;
+				
+                (*j++).last_name=Temp.last_name;			
+				(*j++).UIN=Temp.UIN;
+				(*j++).GPA=Temp.GPA; 
             } 
         }
     } 
