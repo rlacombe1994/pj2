@@ -35,25 +35,22 @@ istream& operator>>(istream& is, map<int,double>& mid)
     int UIN;
     double GPA;
         
-        string next;
-        int nextint;
-        double nextdouble;
+    string next;
+    int nextint;
+    double nextdouble;
 
-        while(!f_in.eof())
+    while(!f_in.eof())
     {
         f_in >> next;
-                if(next=="UIN:") 
-                {
-                        f_in >> nextint;
-                        UIN=nextint;
-                }
-                if(next=="GPA:")
-                {
-                        f_in >> nextdouble;
-                        GPA=nextdouble;
-                        mid.insert(pair<int,double>(UIN,GPA));
-                }
-        }   
+                
+        f_in >> nextint;
+        UIN=nextint;
+                
+        f_in >> nextdouble;
+        GPA=nextdouble;
+                       
+	mid.insert(pair<int,double>(UIN,GPA));
+    }   
         return is;
 }
 
@@ -128,7 +125,7 @@ void binaryserach(set<Student,ByUin>& All,int Uin)
     int end=All.size();
     int place=All.size()/2;
         int old=-1;
-        int counter=1;
+        int counter=0;
         int loop=1;
         
         set<Student>::iterator i;
