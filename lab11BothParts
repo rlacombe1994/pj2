@@ -266,7 +266,7 @@ int main()
 	cout<<endl<<endl;
 	cout<<All;
 	cout<<endl<<endl;
-	remove(All,"smith");
+	remove(All,"Uoe");
 	cout<<All;
 	
         map<int,double> mid;
