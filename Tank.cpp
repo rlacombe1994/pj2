@@ -1,5 +1,10 @@
 #include "MilitaryUnit.h"
 
+Tank::Tank(string name,  int attackDamage) : MilitaryUnit(name, attackDamage)
+{
+
+}
+
 int Tank::half_damage(int attackDamage)
 {
 	return (attackDamage/2);
