@@ -14,14 +14,14 @@ void MilitaryUnit::receiveDamage(int damage) {
 }
 
 string MilitaryUnit::getName() { return name; }
-/*
+
 int MilitaryUnit::getHealth() { return health; }
 
 int MilitaryUnit::getAttack(){ return attackDamage; }
 
 int MilitaryUnit::getArmor() { return armorDefense; } 
 
-void MilitaryUnit::setHealth(int health){ this->health = health;} */
+void MilitaryUnit::setHealth(int health){ this->health = health;} 
 		
 void MilitaryUnit::fight(MilitaryUnit *opponent) {
         opponent->receiveDamage(attackDamage);
