@@ -30,7 +30,7 @@ struct ByUin
 
 istream& operator>>(istream& is, map<int,double>& mid)
 {
-        ifstream f_in("Student.txt",ios::in);
+    ifstream f_in("Student.txt",ios::in);
     
     int UIN;
     double GPA;
@@ -268,7 +268,7 @@ int main()
 	cout<<endl<<endl;
 	remove(All,"smith");
 	cout<<All;
-	/*
+	
         map<int,double> mid;
         cin >> mid;
         
@@ -285,5 +285,5 @@ int main()
         cout << "----mdi----\n";
         map<double,int> mdi;
         copyswap(mdi,mid);
-        cout << mdi; */
+        cout << mdi;
 }
