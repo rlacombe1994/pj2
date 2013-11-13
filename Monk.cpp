@@ -1,11 +1,7 @@
 #include "MilitaryUnit.h"
 
-Monk::Monk(string name,  int attackDamage)
+Monk::Monk(string name,  int attackDamage) : MilitaryUnit(name, attackDamage)
 {
-	this->name = name;
-    this->attackDamage = attackDamage;
-    armorDefense = 5;
-    health = 100;
 	saved = false;
 }
 
@@ -13,9 +9,10 @@ void Monk::save()
 {
 	health =1;
 	saved = true;
+	cout<<name<<" was saved due to the monk's divine protection!"<<endl; 
 }
 
-void Monk::receiveDamage(int damage);
+void Monk::receiveDamage(int damage) 
 {
 	health -= damage - armorDefense;
 	if(health <= 0 && saved == false)
