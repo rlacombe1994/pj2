@@ -255,17 +255,19 @@ void copyswap(map<double,int>& mdi, map<int,double>& mid)
 int main()
 { 
 
+	cout << "----#1 part A----\n\n";
 	set<Student,ByUin> All;
 	cin>>All;
 	cout<<All;
-	cout<<endl<<endl;
-	binaryserach(All,345777777);
-	cout<<endl<<endl;
+	cout << "----#1 part BC----\n\n";
+	binaryserach(All,123456789);	
+	cout << "----#1 part BD----\n\n";
 	linearsearch( All,1.7);
+	cout << "----#1 part BE----\n\n";
 	All.insert(Student("Smith", 204394130, 3.4));
-	cout<<endl<<endl;
 	cout<<All;
 	cout<<endl<<endl;
+	cout << "----#1 part BF----\n\n";
 	remove(All,"Smith");
 	cout<<All;
 	
