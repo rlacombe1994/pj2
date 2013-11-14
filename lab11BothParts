@@ -96,7 +96,7 @@ ostream& operator<<(ostream& os, set<Student,ByUin>& All)
 {
         for(set<Student>::iterator it=All.begin(); it!=All.end(); ++it)
         {
-                os << it->last_name << "\t" << "GPA: " << it->GPA <<"\tUIN: "<< it->UIN<< '\n';
+                os << it->last_name << "\t" << "GPA: " << it->GPA <<"   \tUIN: "<< it->UIN<< '\n';
         }
         return os;
 }
