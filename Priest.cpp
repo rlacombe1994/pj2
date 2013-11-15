@@ -5,7 +5,7 @@ Priest::Priest(string name,  int attackDamage) : MilitaryUnit(name, attackDamage
 	type="splash";
 }
 
-void Priest::fight(vector<MilitaryUnit*>& Allies)
+void Priest::fightAll(vector<MilitaryUnit*>& Allies)
 {	
 	int Alive=0;
 	
