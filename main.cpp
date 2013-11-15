@@ -25,7 +25,6 @@ void printWinner(DefenseOfTheCodeGame game)
 		cout<<"Priest:\t\t Heals all allies. Amount healed is shared."<<endl<<endl;
  }
 
-
 void basicRules()
 {
         cout<<"This game will determine whether or not you have what it takes to best the \tcomputer ";
