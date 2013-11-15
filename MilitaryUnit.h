@@ -63,4 +63,11 @@ class BladeMaster : public MilitaryUnit
 	public:
 		BladeMaster(string name,  int attackDamage);
 		void fight(MilitaryUnit *opponent);
-}; 
+};
+
+class Priest : public MilitaryUnit
+{
+	public:
+		Priest(string name,  int attackDamage);
+		void fightAll(vector<MilitaryUnit*>& Allies);
+};
