@@ -2,7 +2,7 @@
 
 Priest::Priest(string name,  int attackDamage) : MilitaryUnit(name, attackDamage)
 {
-	type="Splash";
+	type="splash";
 }
 
 void Priest::fight(vector<MilitaryUnit*>& Allies)
