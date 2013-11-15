@@ -27,6 +27,11 @@ void MilitaryUnit::fight(MilitaryUnit *opponent) {
         opponent->receiveDamage(attackDamage);
 };
 
+void MilitaryUnit::receiveHealth(int heal)
+{
+	health += heal;
+}
+
 bool MilitaryUnit::isAlive() {
         return this->health > 0;
 }
