@@ -15,7 +15,7 @@ int SquadRemaining(vector<MilitaryUnit*>& Squad)
 	return alive;
 }
 
-void Bomber::fight(vector<MilitaryUnit*>& opponents)
+void Bomber::fightAll(vector<MilitaryUnit*>& opponents)
 {
 	int alive = SquadRemaining( opponents );
 	int damagePerUnit = attackDamage/alive;
