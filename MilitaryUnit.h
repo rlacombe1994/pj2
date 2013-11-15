@@ -18,7 +18,7 @@ class MilitaryUnit
         virtual void fight(MilitaryUnit *opponent);
         virtual void receiveDamage(int damage);
         string getName();
-        string getType() {return type;}
+        string getType();
 	int getHealth();
 	int getAttack();
 	int getArmor();
