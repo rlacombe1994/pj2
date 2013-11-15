@@ -11,16 +11,18 @@ class MilitaryUnit
         int attackDamage;
         int armorDefense;
         int health;
+        string type;
 
 	public:
         MilitaryUnit(string name, int attackDamage);
         virtual void fight(MilitaryUnit *opponent);
         virtual void receiveDamage(int damage);
         string getName();
-		int getHealth();
-		int getAttack();
-		int getArmor();
-		void setHealth(int health); 
+        string getType() {return type;}
+	int getHealth();
+	int getAttack();
+	int getArmor();
+	void setHealth(int health); 
         bool isAlive();
 };
 
