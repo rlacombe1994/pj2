@@ -15,22 +15,22 @@ int SquadRemaining(vector<MilitaryUnit*>& Squad)
 	return alive;
 }
 
-void Bomber::fightAll(vector<MilitaryUnit*>& opponents)
+void Bomber::fightAll(vector<MilitaryUnit*>& targets)
 {
-	int alive = SquadRemaining( opponents );
+	int alive = SquadRemaining( targets );
 	int damagePerUnit = attackDamage/alive;
 	int extraDamage = attackDamage%alive;
 	int firstUnitIndex =0;
 	
-	for(int i =0; i<opponents.size();++i)
-		if(opponents[i]->isAlive())
+	for(int i =0; i<targets.size();++i)
+		if(targets[i]->isAlive())
 		{
-			opponents[i]->receiveDamage(damagePerUnit + extraDamage );
+			targets[i]->receiveDamage(damagePerUnit + extraDamage );
 			firstUnitIndex =1;
 			break;
 		}
 	
-	for(int i =0; i<opponents.size();++i)
-		if(opponents[i]->isAlive() && i != firstUnitIndex )
-			opponents[i]->receiveDamage(damagePerUnit);
+	for(int i =0; i<targets.size();++i)
+		if(targets[i]->isAlive() && i != firstUnitIndex )
+			targets[i]->receiveDamage(damagePerUnit);
 }
