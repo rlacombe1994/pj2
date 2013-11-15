@@ -34,9 +34,17 @@ void DefenseOfTheCodeGame::playRound()
                 int unitA = random(callPlayer());
                 int unitB = random(callComputer());
                 
-        Player[unitA]->fight(Computer[unitB]);
+		
+		if(Player[unitA]->getType() == "splash")
+			Player[unitA]->fight(Computer);
+		else
+			Player[unitA]->fight(Computer[unitB]);
 	//	cout<< Player[unitA]->getName()<<": "<<Player[unitA]->getHealth()<<endl;
-        Computer[unitB]->fight(Player[unitA]);
+	
+		if(Computer[unitA]->getType() == "splash")
+			Computer[unitA]->fight(Player);
+		else
+			Computer[unitB]->fight(Player[unitA]);
 	//	cout<< Player[unitB]->getName()<<": "<<Player[unitB]->getHealth()<<endl;
 }
 
@@ -81,6 +89,11 @@ void DefenseOfTheCodeGame::addUnit(vector<MilitaryUnit*>& playersSquad, char cla
                                 cin>>name;
                                 playersSquad.push_back(new BladeMaster(name,15));
                                 break;
+						case 'b':
+                                cout<<"what do you wish to name your Bomber?\t";
+                                cin>>name;
+                                playersSquad.push_back(new Bomber(name,15));
+                                break;
                         case 'M':
                                 cout<<"what do you wish to name your Monk?\t\t";
                                 cin>>name;
@@ -90,6 +103,11 @@ void DefenseOfTheCodeGame::addUnit(vector<MilitaryUnit*>& playersSquad, char cla
                                 cout<<"what do you wish to name your Necromancer?\t";
                                 cin>>name;
                                 playersSquad.push_back(new Necromancer(name,15));
+                                break;
+						case 'P':
+                                cout<<"what do you wish to name your Priest?\t";
+                                cin>>name;
+                                playersSquad.push_back(new Priest(name,15));
                                 break;
                         case 'T':
                                 cout<<"what do you wish to name your Tank?\t\t";
@@ -105,8 +123,10 @@ void DefenseOfTheCodeGame::buildSquad( vector<MilitaryUnit*>& playerSquad)
  {
         string Assassins    = "";
         string BladeMasters = "";
+		string Bombers       = "";
         string Monks        = "";
         string Necromancers = "";
+		string Priests       = "";
         string Tanks        = "";
         int totalUnits   = 0;
         while(totalUnits != 5)
@@ -116,19 +136,25 @@ void DefenseOfTheCodeGame::buildSquad( vector<MilitaryUnit*>& playerSquad)
                 cin>>Assassins;
                 cout<<"BladeMasters:";
                 cin>>BladeMasters;
+				cout<<"Bombers:";
+                cin>>Bombers;
                 cout<<"Monks:";
                 cin>>Monks;
                 cout<<"Necromancers:";
                 cin>>Necromancers;
+				cout<<"Priests:";
+                cin>>Priests;
                 cout<<"Tanks:";
                 cin>>Tanks;
                 
-                totalUnits = atoi(Assassins.c_str()) + atoi(BladeMasters.c_str()) + atoi(Monks.c_str()) + atoi(Necromancers.c_str()) + atoi(Tanks.c_str());
+                totalUnits = atoi(Assassins.c_str()) + atoi(BladeMasters.c_str())+ atoi(Bombers.c_str()) + atoi(Monks.c_str()) + atoi(Necromancers.c_str())+ atoi(Priests.c_str())  + atoi(Tanks.c_str());
         }
         cout<<endl;
         addUnit(playerSquad,'A',atoi(Assassins.c_str()));
         addUnit(playerSquad,'B',atoi(BladeMasters.c_str()));
+		addUnit(playerSquad,'b',atoi(Bombers.c_str()));
         addUnit(playerSquad,'M',atoi(Monks.c_str()));
         addUnit(playerSquad,'N',atoi(Necromancers.c_str()));
+		addUnit(playerSquad,'P',atoi(Priests.c_str()));
         addUnit(playerSquad,'T',atoi(Tanks.c_str()));
  }
