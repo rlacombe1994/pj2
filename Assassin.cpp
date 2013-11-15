@@ -18,7 +18,7 @@ void Assassin::fight(MilitaryUnit *opponent)
 {
 		if(instaKill())
 		{
-			opponent->receiveDamage(opponent->getHealth());
+			opponent->receiveDamage(2*(opponent->getHealth()));
 			cout<<name<<" has blown a fatal death strike!"<<endl;
 		}
 		else
