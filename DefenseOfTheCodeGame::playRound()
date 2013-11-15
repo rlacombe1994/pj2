@@ -1,0 +1,25 @@
+void DefenseOfTheCodeGame::playRound() 
+{
+        int unitA = random(callPlayer());
+        int unitB = random(callComputer());
+                
+		
+		if(Player[unitA]->getType() == "splash")
+			Player[unitA]->fightAll(Computer);
+		else
+			Player[unitA]->fight(Computer[unitB]);
+	//	cout<< Player[unitA]->getName()<<": "<<Player[unitA]->getHealth()<<endl;
+	
+		if(Computer[unitA]->getType() == "splash")
+			Computer[unitA]->fightAll(Player);
+		else
+			Computer[unitB]->fight(Player[unitA]);
+	//	cout<< Player[unitB]->getName()<<": "<<Player[unitB]->getHealth()<<endl;
+	if(Player[unitA]->getHealth() >0 && Computer[unitA]->getHealth() <=0)
+		cout<<Player[unitA]->getName()<<" has slain "<<Computer[unitA]->getName()<<endl;
+	else if(Player[unitA]->getHealth() <= 0 && Computer[unitA]->getHealth() > 0)
+		cout<<Computer[unitA]->getName()<<" has slain "<<Player[unitA]->getName()<<endl;
+	else if(Player[unitA]->getHealth() <= 0 && Computer[unitA]->getHealth() <= 0)
+		cout<<Computer[unitA]->getName()<<" & "<<Player[unitA]->getName()<<"slaughtered one another."<<endl;
+		
+}
