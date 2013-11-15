@@ -15,6 +15,8 @@ void MilitaryUnit::receiveDamage(int damage) {
 
 string MilitaryUnit::getName() { return name; }
 
+string MilitaryUnit::getType() { return type; }
+
 int MilitaryUnit::getHealth() { return health; }
 
 int MilitaryUnit::getAttack(){ return attackDamage; }
