@@ -6,6 +6,7 @@ using namespace std;
 class DefenseOfTheCodeGame{
         MilitaryUnit *unitA;
         MilitaryUnit *unitB;
+		void addUnit(vector<MilitaryUnit*>& playersSquad, char classType, int numberOfUnits);
         void playRound();
 public:
         DefenseOfTheCodeGame();
@@ -13,4 +14,6 @@ public:
         bool isGameOver();
         bool isDraw();
         string getWinner();
+		vector<MilitaryUnit*> buildSquad();
 };
+
