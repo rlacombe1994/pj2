@@ -1,6 +1,6 @@
 #include <string>
-#include <iostream>
 #include <vector>
+#include <iostream>
 
 using namespace std;
 
@@ -11,19 +11,17 @@ class MilitaryUnit
         int attackDamage;
         int armorDefense;
         int health;
-        string type;
+		string type;
 
 	public:
         MilitaryUnit(string name, int attackDamage);
         virtual void fight(MilitaryUnit *opponent);
         virtual void receiveDamage(int damage);
-        void receiveHealth(int heal);
+		virtual void fightAll(vector<MilitaryUnit*>& targets){};
+		void receiveHealth(int heal);
         string getName();
-        string getType();
-	int getHealth();
-	int getAttack();
-	int getArmor();
-	void setHealth(int health); 
+		string getType();
+		int getHealth();
         bool isAlive();
 };
 
@@ -66,21 +64,20 @@ class BladeMaster : public MilitaryUnit
 	public:
 		BladeMaster(string name,  int attackDamage);
 		void fight(MilitaryUnit *opponent);
-};
+}; 
 
 class Priest : public MilitaryUnit
 {
 	public:
 		Priest(string name,  int attackDamage);
-		void fightAll(vector<MilitaryUnit*>& Allies);
-};
-
+		void fightAll(vector<MilitaryUnit*>& targets);
+}; 
 
 class Bomber : public MilitaryUnit
 {
-   	public:
-     		Bomber(string name,  int attackDamage);
-     		void fightAll(vector<MilitaryUnit*>& opponents);
+	public:
+		Bomber(string name,  int attackDamage);
+		void fightAll(vector<MilitaryUnit*>& targets);
 }; 
 
 class Priest : public MilitaryUnit
