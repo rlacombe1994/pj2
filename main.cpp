@@ -1,6 +1,3 @@
-#include <iostream>
-#include <string>
-#include <vector>
 #include "DefenseOfTheCodeGame.h"
 
 using namespace std;
