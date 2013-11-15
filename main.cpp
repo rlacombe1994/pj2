@@ -19,10 +19,12 @@ void printWinner(DefenseOfTheCodeGame game)
         cout<<"This game include 5 basic unit classes."<<endl<<endl;
         cout<<"Assassin:\t has a small chance to instantly kill his opponent."<<endl;
         cout<<"Blade Master:\t wields two blades allowing for a double strike."<<endl;
+		cout<<"Bomber:\t\t Throws bombs that hit all opponents."<<endl<<endl;
         cout<<"Monk:\t\t has a save ability that is triggered upon his/her first death."<<endl;
         cout<<"Necromancer:\t half of the damage dealt by this unit is added to its health."<<endl;
-        cout<<"Tank:\t\t receives half damage from all incoming damage sources."<<endl<<endl;
+		cout<<"Priest:\t\t Heals all allies. Amount healed is shared."<<endl<<endl;
  }
+
 
 void basicRules()
 {
