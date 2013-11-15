@@ -36,13 +36,13 @@ void DefenseOfTheCodeGame::playRound()
                 
 		
 		if(Player[unitA]->getType() == "splash")
-			Player[unitA]->fight(Computer);
+			Player[unitA]->fightAll(Computer);
 		else
 			Player[unitA]->fight(Computer[unitB]);
 	//	cout<< Player[unitA]->getName()<<": "<<Player[unitA]->getHealth()<<endl;
 	
 		if(Computer[unitA]->getType() == "splash")
-			Computer[unitA]->fight(Player);
+			Computer[unitA]->fightAll(Player);
 		else
 			Computer[unitB]->fight(Player[unitA]);
 	//	cout<< Player[unitB]->getName()<<": "<<Player[unitB]->getHealth()<<endl;
@@ -107,7 +107,7 @@ void DefenseOfTheCodeGame::addUnit(vector<MilitaryUnit*>& playersSquad, char cla
 						case 'P':
                                 cout<<"what do you wish to name your Priest?\t";
                                 cin>>name;
-                                playersSquad.push_back(new Priest(name,15));
+                                playersSquad.push_back(new Priest(name,20));
                                 break;
                         case 'T':
                                 cout<<"what do you wish to name your Tank?\t\t";
