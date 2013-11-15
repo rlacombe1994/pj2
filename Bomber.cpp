@@ -2,7 +2,7 @@
 
 Bomber::Bomber(string name,  int attackDamage) : MilitaryUnit(name, attackDamage)
 {
-	type = "splash";
+	type = "splashdamage";
 }
 
 int SquadRemaining(vector<MilitaryUnit*>& Squad)
@@ -17,6 +17,7 @@ int SquadRemaining(vector<MilitaryUnit*>& Squad)
 
 void Bomber::fightAll(vector<MilitaryUnit*>& targets)
 {
+	
 	int alive = SquadRemaining( targets );
 	int damagePerUnit = attackDamage/alive;
 	int extraDamage = attackDamage%alive;
@@ -33,4 +34,5 @@ void Bomber::fightAll(vector<MilitaryUnit*>& targets)
 	for(int i =0; i<targets.size();++i)
 		if(targets[i]->isAlive() && i != firstUnitIndex )
 			targets[i]->receiveDamage(damagePerUnit);
+		
 }
